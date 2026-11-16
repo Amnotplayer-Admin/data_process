@@ -3,7 +3,7 @@ from pathlib import Path
 
 class DataLoader:
     """Handles loading CSV data files."""
-    
+
     def __init__(self, base_path=None):
         """Initialize the DataLoader with a base path for data files.
         """
@@ -11,20 +11,20 @@ class DataLoader:
             self.base_path = Path(__file__).parent.resolve()
         else:
             self.base_path = Path(base_path)
-    
+
     def load_csv(self, filename):
         """Load a CSV file and return its contents as a list of dictionaries.
         """
         filepath = self.base_path / filename
         data = []
-        
+
         with filepath.open() as f:
             rows = csv.DictReader(f)
             for row in rows:
                 data.append(dict(row))
-        
+
         return data
-    
+
 class Table:
 
     def __init__(self, table_name, table):
